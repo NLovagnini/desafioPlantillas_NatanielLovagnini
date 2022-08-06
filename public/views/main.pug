@@ -1,0 +1,24 @@
+extends index.pug 
+
+block main 
+        <h2>Submit a product</h2>
+
+        form(action="/api/productos" method="post" enctype="multipart/form-data")
+            label(for="title" class="formLabel") Name of the product: 
+            br
+            input(type="text" name="title" class="textInput" required)
+            br
+            label(for="title"  class="formLabel") Price of the product:
+            br
+            input(type="number" name="price" class="textInput" step=".01" required)
+            br
+            label(for="thumbnail"  class="formLabel") Upload an image for the product. (You can get it from <a href="https://www.iconfinder.com/icons" target="_blank">here</a>)</label>
+            br
+            input(type="file" name="thumbnail" class="fileInput" required)
+            br
+            label(for="thumbnail" class="thumbnailMsg") Please make sure the image has the same name as the product (IE: If the name is "Car", The image should be named Car.png)</label>
+            br
+            input(type="submit" value="Submit product" class="submitBtn") 
+
+        form(action="/api/productos" method="get")
+            input(type="submit" value="Ver Productos" class="submitBtn")
