@@ -59,12 +59,14 @@ router.post('/uploadfile', (req, res) =>{
     res.json({message: 'Upload Successful'})
 })
 
+
 router.post('/', async (req, res) =>{
+    
     const newObj = req.body
     const objImg = req.file
     newObj.thumbnail = `/uploads/${objImg.filename}`
-    prodContainer.save(file, newObj)
-    let products = await getAllProds()
+    await prodContainer.save(file, newObj)
+    const products = await getAllProds()
     res.render('showProducts', {
         products
     })
